@@ -4,6 +4,7 @@ channels = ["conda-forge"]
 name = "ds-hdp-hmm"
 platforms = ["linux-64", "osx-arm64"]
 version = "0.1.0"
+preview = ["pixi-build"]
 
 [tasks]
 
@@ -12,16 +13,7 @@ jupyterlab = "*"
 ruff = "*"
 pyrefly = "*"
 pre-commit = "*"
-
-[feature.py36]
-platforms = ["linux-64"]
-
-[feature.py36.dependencies]
-python = "3.6.*"
-numpy = ">=1.19.5,<2"
-scipy = ">=1.5.3,<2"
-matplotlib = ">=3.3.4,<4"
-munkres = ">=1.1.4,<2"
+hmms = { path = "."}
 
 [feature.py312]
 platforms = ["linux-64", "osx-arm64"]
@@ -35,4 +27,20 @@ munkres = ">=1.1.4,<2"
 
 [environments]
 default = ["py312"]
-py36 = ["py36"]
+
+[package] 
+name = "hmms"
+version = "0.1.0"
+
+[package.build] 
+backend = { name = "pixi-build-python", version = "==0.4.0" }
+
+[package.host-dependencies] 
+hatchling = "==1.26.3"
+
+[package.run-dependencies] 
+python = "3.12.*"
+numpy = ">=2.4.0,<3"
+scipy = ">=1.16.3,<2"
+matplotlib = ">=3.10.8,<4"
+munkres = ">=1.1.4,<2"

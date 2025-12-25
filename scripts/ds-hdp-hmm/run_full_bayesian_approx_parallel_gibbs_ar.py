@@ -7,9 +7,8 @@ import sys
 
 import numpy as np
 
-sys.path.append("../../src/ds-hpd-hmm/")
-from gibbs_approx_parallel import *
-from util import *
+from hmms.gibbs_approx_parallel import *
+from hmms.util import *
 
 seed_vec = [111, 222, 333, 444, 555, 666, 777, 888, 999, 1000]
 
