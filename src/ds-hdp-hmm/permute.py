@@ -2,15 +2,15 @@
 ## Only useful when there are ground truth latent states
 
 import numpy as np
-from munkres import Munkres, print_matrix
+from munkres import Munkres
 
 def compute_cost(zt, zt_real):
-    cost_mat = []; #np.zeros((len(np.unique(zt_real)), len(np.unique(zt))));
-    K_use = max(len(np.unique(zt_real)), len(np.unique(zt)));
+    cost_mat = [] #np.zeros((len(np.unique(zt_real)), len(np.unique(zt))));
+    K_use = max(len(np.unique(zt_real)), len(np.unique(zt)))
     for ii in range(K_use):  ## real
-        cost_mat.append([]);
+        cost_mat.append([])
         for jj in range(K_use):
-            cost_mat[ii].append((np.abs((zt_real==ii)*1 - (zt==jj)*1)).sum());
+            cost_mat[ii].append((np.abs((zt_real==ii)*1 - (zt==jj)*1)).sum())
     #print_matrix(cost_mat);
 
     m = Munkres()
